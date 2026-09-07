@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delícias aqui Delícias acolá · Sabores de Minas</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="stage">
+  <div class="phone">
+    <div class="notch"></div>
+
+    <div class="statusbar">
+      <span id="clock">08:14</span>
+      <span class="icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="#3b2418"><rect x="0" y="7" width="3" height="5" rx="1"/><rect x="4.5" y="4.5" width="3" height="7.5" rx="1"/><rect x="9" y="2" width="3" height="10" rx="1"/><rect x="13.5" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M8 10.5l0 0" stroke="#3b2418" stroke-width="2" stroke-linecap="round"/><path d="M4.2 7.2a5.4 5.4 0 017.6 0" stroke="#3b2418" stroke-width="1.6" stroke-linecap="round"/><path d="M1.5 4.4a9.2 9.2 0 0113 0" stroke="#3b2418" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="2.5" stroke="#3b2418" stroke-width="1.3"/><rect x="2.6" y="2.6" width="14" height="6.8" rx="1.4" fill="#3b2418"/><rect x="21" y="4" width="2" height="4" rx="1" fill="#3b2418"/></svg>
+      </span>
+    </div>
+
+    <div class="screen" id="screen">
+
+      <section class="tab active" id="tab-emporio">
+        <div class="px-5 pt-2 pb-3 flex items-start justify-between">
+          <div>
+            <h1 class="font-display text-[21px] leading-tight text-tijolo font-semibold">Delícias aqui<br>Delícias acolá</h1>
+            <p class="text-[11px] text-ambar font-semibold tracking-wide mt-0.5 flex items-center gap-1">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2l2.6 6.3L21 9l-5 4.4L17.5 20 12 16.5 6.5 20 8 13.4 3 9l6.4-.7z"/></svg>
+              O autêntico sabor de Minas
+            </p>
+          </div>
+          <button class="press relative mt-1" onclick="go('sacola')" aria-label="Sacola">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7C2D12" stroke-width="1.7"><path d="M6 8h12l-1 12H7L6 8z" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke-linecap="round"/></svg>
+            <span class="badge cart-badge" style="display:none">0</span>
+          </button>
+        </div>
+
+        <div class="px-5">
+          <div class="stamp-bg relative rounded-3xl overflow-hidden press cursor-pointer" onclick="openProduct('kit-cafe')" style="background:linear-gradient(120deg,#7C2D12,#9A3412);">
+            <div class="absolute -right-6 -bottom-8 w-40 h-40 rounded-full bg-ambar/20"></div>
+            <div class="relative p-5 pr-28 text-cream">
+              <span class="inline-block text-[9px] font-bold tracking-widest bg-ambar text-tijolo px-2 py-1 rounded-full">15% OFF</span>
+              <h2 class="font-display text-[19px] leading-snug font-semibold mt-2">Kit Café com Broa<br>& Queijo Canastra</h2>
+              <p class="text-[11.5px] text-cream/85 mt-1 leading-snug">O combo perfeito da roça, direto pra sua mesa.</p>
+              <span class="inline-flex items-center gap-1 mt-3 text-[11px] font-semibold bg-cream text-tijolo px-3 py-1.5 rounded-full">
+                Aproveitar agora
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7C2D12" stroke-width="2.4"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+            <div class="imgwrap absolute right-0 top-0 h-full w-24 rounded-l-[40px]">
+              <span class="emoji">🧀</span>
+              <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=400&q=70" onerror="this.remove()" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <p class="px-5 text-[13px] font-display font-semibold text-tijolo mb-2">Atalhos rápidos</p>
+          <div class="chiprow" id="shortcut-row"></div>
+        </div>
+
+        <div class="mt-5 px-5 pb-6">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-[15px] font-display font-semibold text-tijolo">Destaques com selo de origem</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3.5" id="featured-grid"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-categorias">
+        <div class="px-5 pt-3 pb-2">
+          <h1 class="font-display text-[20px] font-semibold text-tijolo">Categorias do empório</h1>
+          <p class="text-[12px] text-tijolo/60 mt-0.5">Toque para filtrar os produtos da prateleira.</p>
+        </div>
+        <div class="px-5 space-y-3" id="category-list"></div>
+
+        <div class="px-5 mt-5 pb-6 hidden" id="cat-results">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-[14px] font-display font-semibold text-tijolo" id="cat-results-title">Produtos</p>
+            <button class="text-[11px] font-semibold text-ambar" onclick="clearCategory()">Ver todas</button>
+          </div>
+          <div class="grid grid-cols-2 gap-3.5" id="cat-grid"></div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-sacola">
+        <div class="px-5 pt-3 pb-2">
+          <h1 class="font-display text-[20px] font-semibold text-tijolo">Sua sacola</h1>
+          <p class="text-[12px] text-tijolo/60 mt-0.5" id="sacola-sub">Confira antes de finalizar.</p>
+        </div>
+        <div id="cart-empty" class="px-5 py-16 text-center">
+          <div class="w-20 h-20 mx-auto rounded-full bg-creme2 flex items-center justify-center">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9A3412" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke-linecap="round"/></svg>
+          </div>
+          <p class="mt-4 text-[14px] font-semibold text-tijolo">Sua sacola está vazia</p>
+          <p class="text-[12px] text-tijolo/55 mt-1">Que tal um queijo canastra premiado?</p>
+          <button class="press mt-4 bg-tijolo text-cream text-[12.5px] font-semibold px-5 py-2.5 rounded-full" onclick="go('emporio')">Explorar o empório</button>
+        </div>
+
+        <div id="cart-content" class="hidden px-5 pb-6">
+          <div id="cart-items" class="space-y-3"></div>
+
+          <div class="mt-5 bg-white rounded-2xl border border-creme2 p-3.5">
+            <p class="text-[12px] font-semibold text-tijolo mb-2 flex items-center gap-1.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.8"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M3 9v6l9 5 9-5V9"/></svg>
+              Cupom de desconto
+            </p>
+            <div class="flex gap-2">
+              <input id="coupon-input" type="text" placeholder="Ex: UAI10" oninput="this.value=this.value.toUpperCase()" class="flex-1 bg-cream border border-creme2 rounded-xl px-3 py-2 text-[13px] outline-none focus:border-ambar">
+              <button class="press bg-oliva text-white text-[12.5px] font-semibold px-4 rounded-xl" onclick="applyCoupon()">Aplicar</button>
+            </div>
+            <p id="coupon-msg" class="text-[11px] mt-1.5 hidden"></p>
+          </div>
+
+          <div class="mt-3 bg-white rounded-2xl border border-creme2 p-3.5">
+            <p class="text-[12px] font-semibold text-tijolo mb-2 flex items-center gap-1.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C2D12" stroke-width="1.7"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17.5" cy="17" r="1.6"/></svg>
+              Calcular entrega
+            </p>
+            <div class="flex gap-2">
+              <input id="cep-input" type="text" inputmode="numeric" placeholder="Seu CEP" maxlength="9" class="flex-1 bg-cream border border-creme2 rounded-xl px-3 py-2 text-[13px] outline-none focus:border-ambar">
+              <button class="press bg-tijolo text-cream text-[12.5px] font-semibold px-4 rounded-xl" onclick="calcFrete()">Calcular</button>
+            </div>
+            <div id="frete-options" class="mt-3 space-y-2 hidden"></div>
+          </div>
+
+          <div class="mt-4 bg-tijolo text-cream rounded-2xl p-4 stamp-bg">
+            <div class="flex justify-between text-[12.5px] text-cream/85 mb-1.5"><span>Subtotal</span><span id="sum-subtotal">R$ 0,00</span></div>
+            <div class="flex justify-between text-[12.5px] text-cream/85 mb-1.5" id="row-desc" style="display:none"><span id="row-desc-label">Desconto</span><span id="sum-desc" class="text-ambar font-semibold">- R$ 0,00</span></div>
+            <div class="flex justify-between text-[12.5px] text-cream/85 mb-1.5"><span>Entrega</span><span id="sum-frete">a calcular</span></div>
+            <div class="border-t border-cream/20 my-2.5"></div>
+            <div class="flex justify-between items-end"><span class="text-[13px] font-semibold">Total</span><span id="sum-total" class="font-display text-[22px] font-semibold">R$ 0,00</span></div>
+            <button class="press w-full mt-4 bg-ambar text-tijolo font-bold text-[14px] py-3 rounded-full flex items-center justify-center gap-2" onclick="openCheckout()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#7C2D12"><path d="M12 2l3 7 7 .5-5.3 4.5L18.5 21 12 17l-6.5 4 1.8-7L2 9.5 9 9z"/></svg>
+              Finalizar pedido
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab" id="tab-terra">
+        <div class="relative h-36 imgwrap">
+          <span class="emoji" style="font-size:52px">⛰️</span>
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=70" onerror="this.remove()" alt="">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(124,45,18,.9),rgba(124,45,18,.15));"></div>
+          <div class="absolute bottom-3 left-5 right-5 text-cream">
+            <h1 class="font-display text-[21px] font-semibold leading-tight">Nossa Terra</h1>
+            <p class="text-[11.5px] text-cream/85">Histórias que nascem no interior de Minas.</p>
+          </div>
+        </div>
+
+        <div class="px-5 mt-4">
+          <div class="rounded-2xl p-4 text-cream stamp-bg" style="background:linear-gradient(120deg,#15803D,#166534);">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-[10px] font-bold tracking-widest text-cream/80">CLUBE DO UAI</p>
+                <p class="font-display text-[18px] font-semibold mt-0.5">Você tem 320 pontos</p>
+              </div>
+              <div class="text-right">
+                <p class="text-[10px] text-cream/80">Nível</p>
+                <p class="font-display text-[15px] font-semibold">Trempe de Ouro</p>
+              </div>
+            </div>
+            <div class="mt-3 h-2 rounded-full bg-cream/25 overflow-hidden"><div class="h-full rounded-full bg-ambar" style="width:64%"></div></div>
+            <p class="text-[10.5px] text-cream/80 mt-1.5">Faltam 180 pontos para ganhar um frete grátis.</p>
+          </div>
+        </div>
+
+        <div class="px-5 mt-5">
+          <p class="text-[15px] font-display font-semibold text-tijolo mb-3">Conheça os nossos produtores</p>
+          <div class="space-y-3" id="producer-list"></div>
+        </div>
+
+        <div class="px-5 mt-6">
+          <p class="text-[15px] font-display font-semibold text-tijolo mb-3">Histórico de pedidos</p>
+          <div class="space-y-2.5" id="orders-list"></div>
+        </div>
+
+        <div class="px-5 mt-6 pb-8">
+          <button class="press w-full bg-oliva text-white font-semibold text-[13.5px] py-3 rounded-full flex items-center justify-center gap-2" onclick="showToast('Abrindo conversa no WhatsApp…')">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.7 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.1-1.5-1.1-2.9 0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.3.1.8-.1 1.5z"/></svg>
+            Falar com o empório no WhatsApp
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="bottomnav">
+      <button class="navbtn active" data-tab="emporio" onclick="go('emporio')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 11l8-6 8 6v8a1 1 0 01-1 1h-4v-5h-6v5H5a1 1 0 01-1-1z" stroke-linejoin="round"/></svg>
+        Empório
+        <span class="dot"></span>
+      </button>
+      <button class="navbtn" data-tab="categorias" onclick="go('categorias')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>
+        Categorias
+        <span class="dot"></span>
+      </button>
+      <button class="navbtn" data-tab="sacola" onclick="go('sacola')">
+        <span class="relative">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8h12l-1 12H7L6 8z" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 016 0v2" stroke-linecap="round"/></svg>
+          <span class="badge cart-badge" style="display:none;top:-7px;right:-9px">0</span>
+        </span>
+        Sacola
+        <span class="dot"></span>
+      </button>
+      <button class="navbtn" data-tab="terra" onclick="go('terra')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-6-5.3-6-10a6 6 0 1112 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg>
+        Nossa Terra
+        <span class="dot"></span>
+      </button>
+    </nav>
+
+    <div class="overlay" id="product-overlay">
+      <div class="backdrop" onclick="closeOverlay('product-overlay')"></div>
+      <div class="sheet" id="product-sheet"><div class="grabber"></div></div>
+    </div>
+
+    <div class="overlay" id="checkout-overlay">
+      <div class="backdrop" onclick="closeOverlay('checkout-overlay')"></div>
+      <div class="sheet" id="checkout-sheet"><div class="grabber"></div></div>
+    </div>
+
+    <div class="toast" id="toast">Adicionado à sacola</div>
+
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
